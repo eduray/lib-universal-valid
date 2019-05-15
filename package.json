@@ -9,7 +9,16 @@
     "lint": "tslint --project \"./tsconfig.json\"",
     "test": "mocha --reporter spec",
     "docs": "typedoc --out docs src",
-    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs"
+    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduray/lib-universal-valid.git"
   },
   "keywords": [
     "validator",
